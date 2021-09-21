@@ -2,7 +2,15 @@ version: '3.4'
 
 services:
   catalog.api:
+    container_name: catalog.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
-      - "80"
+      - "8000:80"
+
+  catalogdb:
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    container_name: catalogdb
