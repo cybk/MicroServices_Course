@@ -5,8 +5,11 @@ services:
     container_name: catalog.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - "CatalogDatabaseSettings:ConnectionString=mongodb://catalogdb:27017"
     ports:
       - "8000:80"
+    depends_on:
+      - catalogdb
 
   catalogdb:
     ports:
